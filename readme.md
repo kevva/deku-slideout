@@ -29,7 +29,7 @@ const onClickOutside = (open, setState) => {
 	};
 };
 
-const render = ({state}) => {
+const render = ({state}, setState) => {
 	const {open} = state;
 
 	return (
