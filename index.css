@@ -13,4 +13,6 @@ main {
 	max-width: 250px;
 	color: #fff;
 	background-color: #000;
+	text-align: center;
+	transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
 }
