@@ -3,31 +3,37 @@ import dom from 'magic-virtual-element';
 import {render as r, tree} from 'deku';
 import Slideout from '../';
 
-const onClick = setState => {
+const onClick = (align, setState) => {
 	return e => {
 		e.preventDefault();
-		setState({open: true});
+		setState({[align === 'left' ? 'openLeft' : 'openRight']: true});
 	};
 };
 
-const onClickOutside = (open, setState) => {
+const onClickOutside = (open, align, setState) => {
 	return () => {
 		if (open) {
-			setState({open: false});
+			setState({[align === 'left' ? 'openLeft' : 'openRight']: false});
 		}
 	};
 };
 
 const render = ({state}, setState) => {
-	const {open} = state;
+	const {openLeft, openRight} = state;
 
 	return (
 		<div>
-			<Slideout align='right' open={open} onClickOutside={onClickOutside(open, setState)}>
+			<main>
+				<h1>Hello world!</h1>
+				<button onClick={onClick('left', setState)}>Toggle left menu!</button>
+				<button onClick={onClick('right', setState)}>Toggle right menu!</button>
+			</main>
+			<Slideout align='left' open={openLeft} onClickOutside={onClickOutside(openLeft, 'left', setState)}>
 				<h3>This is a menu!</h3>
 			</Slideout>
-			<h1>Hello world!</h1>
-			<button onClick={onClick(setState)}>Click me!</button>
+			<Slideout align='right' open={openRight} onClickOutside={onClickOutside(openRight, 'right', setState)}>
+				<h3>This is a menu!</h3>
+			</Slideout>
 		</div>
 	);
 };

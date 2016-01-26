@@ -4,6 +4,10 @@ body {
 	margin: 0;
 }
 
+main {
+	text-align: center;
+}
+
 .Slideout {
 	z-index: 1;
 	max-width: 250px;
