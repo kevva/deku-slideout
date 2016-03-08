@@ -34,7 +34,8 @@ const render = ({props}) => {
 		[align]: 0,
 		bottom: 0,
 		width: '100%',
-		transform: `translateX(${open ? '0%' : align === 'left' ? '-100%' : '100%'})`
+		transform: `translateX(${open ? '0%' : align === 'left' ? '-100%' : '100%'})`,
+		'-webkit-transform': `translateX(${open ? '0%' : align === 'left' ? '-100%' : '100%'})`
 	};
 
 	return (
